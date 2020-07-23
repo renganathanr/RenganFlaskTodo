@@ -36,6 +36,6 @@ nosetests.xml
 .project
 .pydevproject
 
-flaskblogvenv
-flaskblog.db
-flaskblog.log*
+flasktodovenv
+flasktodo.db
+flasktodo.log*
