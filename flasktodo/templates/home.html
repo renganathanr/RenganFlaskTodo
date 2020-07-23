@@ -12,21 +12,21 @@
                     <th>Added</th>
                     <th>Actions</th>
                 </tr>
+                {% for title in titles %}
                 <tr>
-                    {% for title in titles %}
                     <td><a href="#">{{ title.content }}</a></td>
                     <td>{{ title.date_created.date() }}</td>
                     <td>
-                        <a href="#">Delete</a><br>
-                        <a href="#">Update</a>
+                        <a href="{{ url_for('delete_content', id=title.id) }}">Delete</a><br>
+                        <a href="{{ url_for('update_content', id=title.id) }}">Update</a>
                     </td>
-                    {% endfor %}
                 </tr>
+                {% endfor %}
             </table>
             {% endif %}
         </p>
         <p>
-            <form method='POST' action="">
+            <form method='POST' action="/title/add">
                 {{ form.hidden_tag() }}
                 {{ form.content }}
                 <input type="submit" value="Add Title">
