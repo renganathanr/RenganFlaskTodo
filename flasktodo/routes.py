@@ -1,5 +1,6 @@
+from flask import render_template
 from flasktodo import app
 
 @app.route('/')
 def home():
-    return 'FlaskTodo app is in creation'
+    return render_template('home.html')
