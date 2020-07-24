@@ -14,11 +14,11 @@
                 </tr>
                 {% for title in titles %}
                 <tr>
-                    <td><a href="{{ url_for('tasks', id=title.id) }}">{{ title.content }}</a></td>
+                    <td><a href="{{ url_for('tasks.tasks_list', id=title.id) }}">{{ title.content }}</a></td>
                     <td>{{ title.date_created.date() }}</td>
                     <td>
-                        <a href="{{ url_for('delete_title', id=title.id) }}">Delete</a><br>
-                        <a href="{{ url_for('update_title', id=title.id) }}">Update</a>
+                        <a href="{{ url_for('titles.delete_title', id=title.id) }}">Delete</a><br>
+                        <a href="{{ url_for('titles.update_title', id=title.id) }}">Update</a>
                     </td>
                 </tr>
                 {% endfor %}
