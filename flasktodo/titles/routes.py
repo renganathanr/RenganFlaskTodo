@@ -34,4 +34,4 @@ def update_title(id):
         return redirect(url_for('main.home'))
     elif request.method == 'GET':
         form.content.data = title.content
-    return render_template('update_content.html', form=form)
+    return render_template('update_content.html', form=form, title='Update Title')

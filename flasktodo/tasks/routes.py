@@ -15,7 +15,7 @@ def tasks_list(id):
         db.session.add(task)
         db.session.commit()
         return redirect(url_for('tasks.tasks_list', id=title_to_add_tasks.id))
-    return render_template('tasks.html', form=form, tasks=tasks)
+    return render_template('tasks.html', form=form, tasks=tasks, title='Tasks')
 
 @tasks.route('/task/<int:id>/delete')
 def delete_task(id):
@@ -34,4 +34,4 @@ def update_task(id):
         return redirect(url_for('tasks.tasks_list', id=task.title_id))
     elif request.method == 'GET':
         form.content.data = task.content
-    return render_template('update_content.html', task=task, form=form)
+    return render_template('update_content.html', task=task, form=form, title='Update Task')
