@@ -3,10 +3,14 @@
 {% block body %}
     <div class="content">
         <p>
-            <form method='POST' action="">
+            <form action="" method='POST'>
                 {{ form.hidden_tag() }}
                 {{ form.content }}
+                {% if task %}
+                <input type="submit" value="Update Task">
+                {% else %}
                 <input type="submit" value="Update Title">
+                {% endif %}
             </form>
         </p>
     </div>
