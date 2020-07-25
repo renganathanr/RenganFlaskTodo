@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="content">
+    <div>
         <p>
             {% if tasks|length < 1 %}
-            <h2>There are no tasks. Create one below!</h2>
+            <h3 style="text-align: center;">There are no tasks. Create one below!</h3>
             {% else %}
             <table>
                 <tr>

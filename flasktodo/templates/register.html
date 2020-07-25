@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend style="text-align: center;">Join Today</legend>
+            <p>
+                {{ form.username.label }}<br>
+                {% if form.username.errors %}
+                    {{ form.username() }}
+                    <div>
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username() }}
+                {% endif %}
+            </p>
+            <p>
+                {{ form.email.label }}<br>
+                {% if form.email.errors %}
+                    {{ form.email() }}
+                    <div>
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email() }}
+                {% endif %}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {% if form.password.errors %}
+                    {{ form.password() }}
+                    <div>
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password() }}
+                {% endif %}
+            </p>
+            <p>
+                {{ form.confirm_password.label }}<br>
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password() }}
+                    <div>
+                        {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password() }}
+                {% endif %}
+            </p>
+        </fieldset>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+</div>
+<div>
+    <small>
+        Already have an account? <a href="{{ url_for('users.login') }}">Sign In</a>
+    </small>
+</div>
+{% endblock body %}

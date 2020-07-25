@@ -1,8 +1,8 @@
 """titles table
 
-Revision ID: d4175c2603a7
-Revises: 
-Create Date: 2020-07-23 16:42:07.911240
+Revision ID: 018e2946752a
+Revises: a2ae4643a724
+Create Date: 2020-07-24 13:11:15.263865
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd4175c2603a7'
-down_revision = None
+revision = '018e2946752a'
+down_revision = 'a2ae4643a724'
 branch_labels = None
 depends_on = None
 
@@ -22,6 +22,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=100), nullable=False),
     sa.Column('date_created', sa.DateTime(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_title_date_created'), 'title', ['date_created'], unique=False)

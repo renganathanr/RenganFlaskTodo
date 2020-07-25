@@ -1,22 +1,65 @@
+html {
+  font-family: sans-serif;
+}
+
+body {
+  background: #fafafa;
+  color: #333333;
+}
+
+.bg-steel {
+  background-color: #b9e1fd;
+  padding: 20px;
+}
+
 .content {
-    margin: 0 auto;
-    width: 400px;
+  margin: 0 auto;
+  width: 800px;
+}
+
+.home-content {
+  width: auto;
+  float: left;
 }
 
 table, td, th {
-    border: 1px solid #aaa;
+  border: 1px solid #aaa;
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 th {
-    height: 30px;
+  height: 30px;
 }
 
 td {
-    text-align: center;
-    padding: 5px;
+  text-align: center;
+  padding: 5px;
+}
+
+/* unvisited link */
+a:link {
+  color: rgb(60, 60, 60);
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: rgb(60, 60, 60);
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: rgb(60, 60, 60);
+  text-decoration: none;
 }

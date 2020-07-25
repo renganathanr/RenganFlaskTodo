@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     {% if title %}
         <title>FlaskTodo | {{ title }}</title>
@@ -11,10 +12,35 @@
     {% endif %}
 </head>
 <body>
+    <header>
+        <nav class="bg-steel">
+            <div class="content">
+              <a href="{{ url_for('main.home') }}">Home</a>
+              <!-- Navbar Right Side -->
+              {% if current_user.is_authenticated %}
+              <a href="{{ url_for('users.account') }}">Account</a>
+              <a href="{{ url_for('users.logout') }}">Logout</a>
+              {% else %}
+              <a href="{{ url_for('users.login') }}">Login</a>
+              <a href="{{ url_for('users.register') }}">Register</a>
+              {% endif %}
+            </div>
+        </nav>
+    </header>
     <div class="content">
-        <h1 style="text-align: center;">Task Master</h1>
+        <h2 style="text-align: center;">Task Master</h2>
+        <div>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div>
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block body %}{% endblock body %}
+        </div>
     </div>
-    {% block body %}
-    {% endblock body %}
 </body>
 </html>

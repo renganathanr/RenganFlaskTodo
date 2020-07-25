@@ -1,36 +1,13 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="content">
-        <p>
-            {% if titles|length < 1 %}
-            <h2>There are no titles. Create one below!</h2>
-            {% else %}
-            <table>
-                <tr>
-                    <th>Titles</th>
-                    <th>Added</th>
-                    <th>Actions</th>
-                </tr>
-                {% for title in titles %}
-                <tr>
-                    <td><a href="{{ url_for('tasks.tasks_list', id=title.id) }}">{{ title.content }}</a></td>
-                    <td>{{ title.date_created.date() }}</td>
-                    <td>
-                        <a href="{{ url_for('titles.delete_title', id=title.id) }}">Delete</a><br>
-                        <a href="{{ url_for('titles.update_title', id=title.id) }}">Update</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% endif %}
-        </p>
-        <p>
-            <form action="/title/add" method='POST'>
-                {{ form.hidden_tag() }}
-                {{ form.content }}
-                <input type="submit" value="Add Title">
-            </form>
-        </p>
+    <div class="home-content">
+        <h3>It's easy to manage your tasks!</h3>
+        <ul>
+            <li>Create your tasks</li>
+            <li>View your tasks</li>
+            <li>Manage your tasks</li>
+        </ul>
+        <img src="{{ url_for('static', filename='images/todo.jpg') }}">
     </div>
 {% endblock body %}

@@ -1,4 +1,5 @@
 from flask import render_template, redirect, url_for, request, Blueprint
+from flask_login import current_user, login_required
 from flasktodo import db
 from flasktodo.models import Title, Task
 from flasktodo.main.forms import TodoForm
@@ -6,6 +7,7 @@ from flasktodo.main.forms import TodoForm
 tasks = Blueprint('tasks', __name__)
 
 @tasks.route('/title/<int:id>/tasks', methods=['GET', 'POST'])
+@login_required
 def tasks_list(id):
     title_to_add_tasks = Title.query.get_or_404(id)
     tasks = title_to_add_tasks.tasks.all()
@@ -18,6 +20,7 @@ def tasks_list(id):
     return render_template('tasks.html', form=form, tasks=tasks, title='Tasks')
 
 @tasks.route('/task/<int:id>/delete')
+@login_required
 def delete_task(id):
     task = Task.query.get_or_404(id)
     db.session.delete(task)
@@ -25,6 +28,7 @@ def delete_task(id):
     return redirect(url_for('tasks.tasks_list', id=task.title_id))
 
 @tasks.route('/task/<int:id>/update', methods=['GET', 'POST'])
+@login_required
 def update_task(id):
     task = Task.query.get_or_404(id)
     form = TodoForm()

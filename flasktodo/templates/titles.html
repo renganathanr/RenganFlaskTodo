@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div>
+        <p>
+            {% if titles|length < 1 %}
+            <h3 style="text-align: center;">There are no titles. Create one below!</h3>
+            {% else %}
+            <table>
+                <tr>
+                    <th>Titles</th>
+                    <th>Added</th>
+                    <th>Actions</th>
+                </tr>
+                {% for title in titles %}
+                <tr>
+                    <td><a href="{{ url_for('tasks.tasks_list', id=title.id) }}">{{ title.content }}</a></td>
+                    <td>{{ title.date_created.date() }}</td>
+                    <td>
+                        <a href="{{ url_for('titles.delete_title', id=title.id) }}">Delete</a><br>
+                        <a href="{{ url_for('titles.update_title', id=title.id) }}">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </p>
+        <p>
+            <form action="/title/add" method='POST'>
+                {{ form.hidden_tag() }}
+                {{ form.content() }}
+                <input type="submit" value="Add Title">
+            </form>
+        </p>
+    </div>
+{% endblock body %}
