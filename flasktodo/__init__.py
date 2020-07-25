@@ -24,6 +24,8 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
 
+    from flasktodo.errors.handlers import errors
+    app.register_blueprint(errors)
     from flasktodo.main.routes import main
     app.register_blueprint(main)
     from flasktodo.titles.routes import titles

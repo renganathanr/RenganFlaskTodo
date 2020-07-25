@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div>
+        <h1>Wrong method (405)</h1>
+        <p>Please check your route and try again</p>
+        <p><a href="{{ url_for('main.home') }}">Back</a></p>
+    </div>
+{% endblock body %}
